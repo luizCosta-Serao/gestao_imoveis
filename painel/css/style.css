@@ -59,7 +59,10 @@ body {
 
 /* Page Painel de Controle */
 .header {
+  z-index: 1;
   background-color: #222;
+  position: fixed;
+  width: 100%;
   padding: 40px;
   display: flex;
   justify-content: flex-end;
@@ -88,11 +91,18 @@ body {
   flex-direction: column;
   height: 100vh;
   position: fixed;
+  top: 100px;
   width: 300px;
 }
 
+.sidebar h2 {
+  color: #fff;
+  background-color: #222;
+  padding: 5px 5px 5px 40px;
+}
+
 .sidebar a {
-  padding: 40px 40px 10px 40px;
+  padding: 30px 40px 10px 40px;
   text-decoration: none;
   color: #fff;
   font-size: 18px;
@@ -103,5 +113,83 @@ body {
 .content {
   position: relative;
   left: 300px;
+  top: 100px;
   padding: 40px;
+}
+
+.title {
+  color: #222;
+  font-weight: 400;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form .form-group label {
+  font-size: 20px;
+  color: #222;
+  font-weight: 700;
+}
+
+form .form-group input,
+form .form-group select {
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #222;
+  color: #222;
+  padding-left: 8px;
+}
+
+form .form-group input[type="file"] {
+  padding-top: 10px;
+}
+
+form input[type="submit"] {
+  background-color: #3377ff;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: .3s;
+}
+
+form input[type="submit"]:hover {
+  opacity: .7;
+}
+
+.sucesso {
+  background-color: #00ff00;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+}
+
+.erro {
+  background-color: #ff0000;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 5px 10px;
+  margin-bottom: 15px;
 }

@@ -23,6 +23,7 @@
     <aside class="sidebar">
         <a href="<?php echo INCLUDE_PATH_PAINEL; ?>">Início</a>
         <h2>Gestão de Imóveis</h2>
+        <a href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-empreendimento">Cadastrar Empreendimento</a>
     </aside>
     <div class="content">
       <?php
@@ -35,5 +36,9 @@
       ?>
     </div>
   </section>
+
+  <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.js"></script>
+  <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/plugins/jquery.maskMoney.js"></script>
+  <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/index.js"></script>
 </body>
 </html>
