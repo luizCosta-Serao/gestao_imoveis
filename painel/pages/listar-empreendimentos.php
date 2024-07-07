@@ -53,6 +53,7 @@
       <p><b>Tipo:</b> <?php echo $value['tipo'] ?></p>
       <p><b>Preço:</b> R$<?php echo $value['preco'] ?></p>
       <a class="btn-deletar" href="<?php echo INCLUDE_PATH_PAINEL; ?>listar-empreendimentos?id=<?php echo $value['id'] ?>">Deletar</a>
+      <a class="btn-visualizar" href="<?php echo INCLUDE_PATH_PAINEL; ?>visualizar-empreendimento?id=<?php echo $value['id'] ?>">Visualizar</a>
     </div>
   <?php } ?>
 </section>

@@ -22,6 +22,10 @@ $( function() {
       }).done(function(data) {
         console.log(data);
       })
+    },
+    stop: function() {
+      let el = $(this);
+      el.find('.single-empreendimento').css('border', '1px solid #ccc');
     }
   });
 

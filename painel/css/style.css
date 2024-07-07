@@ -239,10 +239,50 @@ form input[type="submit"]:hover {
   text-decoration: none;
 }
 
+.btn-visualizar {
+  background-color: #3377ff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .buscar-empreendimento form {
   max-width: calc(100% - 300px);
 }
 
 .buscar-empreendimento form input[type="text"] {
   max-width: 400px;
+}
+
+.empreendimento {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: calc(100% - 300px);
+  display: grid;
+  grid-template-columns: 350px 1fr;
+}
+
+.empreendimento > p {
+  grid-column: 1 / -1;
+}
+
+.empreendimento div > h2 {
+  color: #222;
+  background-color: #ccc;
+  padding: 10px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.empreendimento div > p {
+  color: #222;
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
 }
