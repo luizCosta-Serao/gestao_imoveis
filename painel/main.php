@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL; ?>/css/jquery-ui.min.css">
   <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL; ?>/css/style.css">
   <title>Painel de Controle</title>
 </head>
@@ -24,6 +25,7 @@
         <a href="<?php echo INCLUDE_PATH_PAINEL; ?>">Início</a>
         <h2>Gestão de Imóveis</h2>
         <a href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-empreendimento">Cadastrar Empreendimento</a>
+        <a href="<?php echo INCLUDE_PATH_PAINEL; ?>listar-empreendimentos">Listar Empreendimentos</a>
     </aside>
     <div class="content">
       <?php
@@ -39,6 +41,7 @@
 
   <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.js"></script>
   <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/plugins/jquery.maskMoney.js"></script>
+  <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/plugins/jquery-ui.min.js"></script>
   <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/index.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@
 
 body {
   background-color: #ccc;
+  overflow-x: hidden;
 }
 
 /* Page Login */
@@ -192,4 +193,56 @@ form input[type="submit"]:hover {
   font-weight: 700;
   padding: 5px 10px;
   margin-bottom: 15px;
+}
+
+.lista-empreendimentos {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: calc(100% - 300px);
+  gap: 40px;
+  position: relative;
+  margin-top: 40px;
+}
+
+.title {
+  grid-column: 1 / -1;
+}
+
+.single-empreendimento {
+  border: 1px solid #ccc;
+  max-width: 350px;
+  padding: 20px;
+}
+
+.single-empreendimento img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.single-empreendimento p {
+  color: #222;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.btn-deletar {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.buscar-empreendimento form {
+  max-width: calc(100% - 300px);
+}
+
+.buscar-empreendimento form input[type="text"] {
+  max-width: 400px;
 }

@@ -15,8 +15,10 @@
           // Realizar upload da imagem
           $idImagem = Painel::uploadFile($imagem);
           // Inserir empreendimento no banco de dados 
-          $sql = MySql::connect()->prepare("INSERT INTO `empreendimentos` VALUES (null, ?, ?, ?, ?)");
-          $sql->execute(array($nome, $tipo, $preco, $idImagem));
+          $sql = MySql::connect()->prepare("INSERT INTO `empreendimentos` VALUES (null, ?, ?, ?, ?, ?)");
+          $sql->execute(array($nome, $tipo, $preco, $idImagem, 0));
+          $lastId = MySql::connect()->lastInsertId();
+          MySql::connect()->exec("UPDATE `empreendimentos` SET order_id = $lastId WHERE id = $lastId");
           // Mensagem de sucesso
           Painel::alert('sucesso', 'Cadastro do empreendimento realizado com sucesso');
         } else {
