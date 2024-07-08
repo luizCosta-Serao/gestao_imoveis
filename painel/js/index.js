@@ -7,6 +7,10 @@ if (location.href.includes('visualizar-empreendimento')) {
   $('#preco').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
 }
 
+if (location.href.includes('editar-imovel')) {
+  $('#preco').maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
+}
+
 // Ordenar empreendimentos com biblioteca jQuery UI
 if (location.href === 'http://localhost/gestao_imoveis/painel/listar-empreendimentos') {
   $( function() {

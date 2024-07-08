@@ -129,6 +129,7 @@
         <p><?php echo $value['nome'] ?></p>
         <p><?php echo $value['preco'] ?></p>
         <p><?php echo $value['area'] ?></p>
+        <p><a class="btn-visualizar" href="<?php echo INCLUDE_PATH_PAINEL; ?>editar-imovel?id=<?php echo $value['id'] ?>">Editar</a></p>
       </div>
     <?php } ?>
   </div>
