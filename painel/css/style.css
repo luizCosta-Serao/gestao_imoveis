@@ -315,9 +315,38 @@ form input[type="submit"]:hover {
   border-bottom: 1px solid #3377ff;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
 }
 
 .valor-itens div p {
   color: #222;
   font-size: 16px;
+}
+
+.imagens-imovel {
+  background-color: #fff;
+  padding: 40px;
+  gap: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: calc(100% - 300px);
+  margin-bottom: 40px;
+}
+
+.imagens-imovel h1 {
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.single-imagem-imovel {
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-width: 320px;
+  border-radius: 10px;
+}
+
+.single-imagem-imovel img {
+  width: 300px;
+  border-radius: 10px;
 }
