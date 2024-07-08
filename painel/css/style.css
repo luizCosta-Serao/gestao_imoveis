@@ -286,3 +286,7 @@ form input[type="submit"]:hover {
   margin-bottom: 15px;
   padding-bottom: 5px;
 }
+
+.cadastrar-imovel {
+  margin-top: 40px;
+}

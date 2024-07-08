@@ -18,3 +18,95 @@
     <p><b>Tipo do Empreendimento:</b> <?php echo $empreendimento['tipo'] ?></p>
   </div>
 </section>
+
+<section class="cadastrar-imovel">
+  <form method="post" enctype="multipart/form-data">
+  <?php
+      if (isset($_POST['cadastrar'])) {
+        // Obtendo valores dos inputs
+        $empreendimentoId = $id;
+        $nome = $_POST['nome'];
+        $preco = $_POST['preco'];
+        $area = $_POST['area'];
+
+        // obtendo todas as imagens selecionadas
+        $imagens = array();
+        // obtendo a quantidade de imagens selecionadas
+        $amountFiles = count($_FILES['imagem']['name']);
+
+        $sucesso = true;
+
+        // Se tiver selecionado uma imagem
+        if ($_FILES['imagem']['name'][0] !== '') {
+          // Loop nas imagens
+          for ($i=0; $i < $amountFiles; $i++) {
+            // obtendo o type e size de cada imagem 
+            $imagemAtual = [
+              'type' => $_FILES['imagem']['type'][$i],
+              'size' => $_FILES['imagem']['size'][$i],
+            ];
+            // Se imagem tiver um formato inválido
+            if (Painel::imagemValida($imagemAtual) === false) {
+              $sucesso = false;
+              Painel::alert('erro', 'Uma das imagens selecionadas é inválida');
+              break;
+            }
+          }
+        } else {
+          // Se não tiver selecionado nenhuma imagem
+          $sucesso = false;
+          Painel::alert('erro', 'Você precisa selecionar pelo menos uma imagem');
+        }
+
+        if ($sucesso) {
+          // Loop por cada imagem
+          for ($i=0; $i < $amountFiles; $i++) {
+            // obtendo o tmp_name e o name de cada imagem para fazer o upload 
+            $imagemAtual = [
+              'tmp_name' => $_FILES['imagem']['tmp_name'][$i],
+              'name' => $_FILES['imagem']['name'][$i],
+            ];
+            $imagens[] = Painel::uploadFile($imagemAtual);
+          }
+
+          // Inserindo no banco de dados as informações do produto
+          $sql = MySql::connect()->prepare("INSERT INTO `imoveis` VALUES (null, ?, ?, ?, ?)");
+          $sql->execute(array($empreendimentoId, $nome, $preco, $area));
+
+          // Obtendo o id da última inserção no banco de dados
+          $lastId = MySql::connect()->lastInsertId();
+          // Loop foreach nas imagens
+          foreach ($imagens as $key => $value) {
+            // Inserindo cada imagem no banco de dados
+            MySql::connect()->exec("INSERT INTO `imagens_imovel` VALUES (null, $lastId, '$value')");
+          }
+
+          Painel::alert('sucesso', 'Imóvel cadastrado com sucesso');
+
+        }
+
+      }
+    ?>
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text"  name="nome" id="nome">
+    </div>
+
+    <div class="form-group">
+      <label for="preco">Preço</label>
+      <input type="text" name="preco" id="preco">
+    </div>
+
+    <div class="form-group">
+      <label for="area">Área</label>
+      <input type="number" min="0" max="900" step="1" name="area" id="area">
+    </div>
+
+    <div class="form-group">
+      <label for="imagem">Selecione as imagens do Imóvel</label>
+      <input type="file" multiple name="imagem[]" id="imagem">
+    </div>
+
+    <input type="submit" name="cadastrar" value="Cadastrar Imóvel">
+  </form>
+</section>
