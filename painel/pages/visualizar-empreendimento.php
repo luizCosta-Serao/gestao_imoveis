@@ -110,3 +110,26 @@
     <input type="submit" name="cadastrar" value="Cadastrar Imóvel">
   </form>
 </section>
+
+<section class="tabela">
+  <div class="titulo-itens">
+    <p>Nome</p>
+    <p>Preço</p>
+    <p>Área</p>
+    <p>#</p>
+  </div>
+  <div class="valor-itens">
+    <?php
+      $imoveis = MySql::connect()->prepare("SELECT * FROM `imoveis` WHERE empreendimento_id = ?");
+      $imoveis->execute(array($id));
+      $imoveis = $imoveis->fetchAll();
+      foreach ($imoveis as $key => $value) {
+    ?>
+      <div>
+        <p><?php echo $value['nome'] ?></p>
+        <p><?php echo $value['preco'] ?></p>
+        <p><?php echo $value['area'] ?></p>
+      </div>
+    <?php } ?>
+  </div>
+</section>
