@@ -8,6 +8,22 @@
     $sql->execute(array($idDeletar));
     $sql = $sql->fetch();
     @unlink(BASE_DIR_PAINEL.'/uploads/'.$sql['imagem']);
+
+    $imoveis = MySql::connect()->prepare("SELECT * FROM `imoveis` WHERE empreendimento_id = ?");
+    $imoveis->execute(array($idDeletar));
+    $imoveis = $imoveis->fetchAll();
+
+    foreach ($imoveis as $key => $value) {
+      $imagensImovel = MySql::connect()->prepare("SELECT * FROM `imagens_imovel` WHERE imovel_id = ?");
+      $imagensImovel->execute(array($value['id']));
+      $imagensImovel = $imagensImovel->fetchAll();
+      foreach ($imagensImovel as $key2 => $value2) {
+        @unlink(BASE_DIR_PAINEL.'/uploads/'.$value2['imagem']);
+        MySql::connect()->exec("DELETE FROM `imagens_imovel` WHERE id = $value2[id]");
+      }
+    }
+    $sql = MySql::connect()->prepare("DELETE FROM `imoveis` WHERE empreendimento_id = ?");
+    $sql->execute(array($idDeletar));
     
     // Deletando empreendimento no banco de dados
     $sql = MySql::connect()->prepare("DELETE FROM `empreendimentos` WHERE id = ?");
