@@ -133,3 +133,29 @@
 
   <input type="submit" name="acao" id="acao" value="Atualizar Imóvel">
 </form>
+
+<section class="deletar-imovel">
+  <?php
+    $sql = MySql::connect()->prepare("SELECT * FROM `imoveis`");
+    $sql->execute();
+    if ($sql->rowCount() >= 1) {
+      if (isset($_GET['deletar'])) {
+        $deleteId = $_GET['id'];
+        $imagens = MySql::connect()->prepare("SELECT * FROM `imagens_imovel` WHERE imovel_id = $deleteId");
+        $imagens->execute();
+        $imagens = $imagens->fetchAll();
+        foreach ($imagens as $key => $value) {
+          @unlink(BASE_DIR_PAINEL.'/uploads/'.$value['imagem']);
+        }
+    
+        $deleteImagensImovel = MySql::connect()->prepare("DELETE FROM `imagens_imovel` WHERE imovel_id = $deleteId");
+        $deleteImagensImovel->execute();
+        $deleteImovel = MySql::connect()->prepare("DELETE FROM `imoveis` WHERE id = $deleteId");
+        $deleteImovel->execute();
+        Painel::alert('sucesso', 'O produto foi deletado do estoque com sucesso');
+        header('Location: '.INCLUDE_PATH_PAINEL.'listar-empreendimentos');
+      }
+  }
+  ?>
+  <a class="btn-deletar" href="<?php echo INCLUDE_PATH_PAINEL ?>editar-imovel?id=<?php echo $id ?>&deletar">Deletar Imóvel</a>
+</section>
